@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+      <%- include('includes/nav.ejs'); %>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <br>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Cast</th>
+          <th>Directors</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% movies.forEach(function(movie){ %>
+        <tr>
+          <td><%= movie.title %></td>
+          <td><% movie.cast.forEach((c) => { %> <%= c %><br> <% }); %></td>
+          <td><% movie.directors.forEach((d) => { %> <%= d %><br> <% }); %></td>
+          <td><a class="info-button" href="/details/<%= movie._id %>">View Details</a></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <script src="/javascripts/script.js"></script>
+  </body>
+</html>
